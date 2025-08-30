@@ -34,7 +34,7 @@
 
 ---
 
-- `esp_err_t err = esp_http_client_perform(client);`  핸들러를 사용하여 접근
+- `int r = esp_http_client_read(client, buffer + total, content_length - total);`  핸들러를 사용하여 접근
 - 값을 읽을 준비를 함
 
 ## 2
