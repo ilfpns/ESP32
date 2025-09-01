@@ -262,6 +262,10 @@ if (resp_buf && resp_buf_sz > 0)
 
 ⇒ 마지막 널문자 넣고 로그 출력
 
+⇒ 다음에 cJsonParsing에 필요할 수 있으므로
+
+⇒ Json이 담긴 body, body의 length, 클라이언트 핸들을 확보한다
+
 ### 10
 
 ---
