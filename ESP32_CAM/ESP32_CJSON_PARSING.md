@@ -63,6 +63,7 @@ total_read += n;
 
 - `esp_http_client_read_response` 는 읽은 데이터의 길이를 반환한다
 - total_read += n 을 하여 읽은 부분은 제외하고 읽는다
+- 정보가 담긴 body를 파라미터로 받았다면 필요 없음
 
 ## 4
 
@@ -76,6 +77,7 @@ cJSON *root = cJSON_Parse(buffer);
 - root 는 cJson_Parse의 반환값으로, 파싱된 전체 JSON 문서의 최상의 노드를 가르킴
 - root 작업이 끝나면 cJSON_Delete(root)를 해줘야 한다 (자식 노드까지 제거)
 - 그 후 buffer를 free 해주면 된다
+- 만약 Parse를 할 수 없다면 받은 데이터가 `정확히` Json인지 파악해야한다
 
 ## 5
 
@@ -92,6 +94,9 @@ if (cJSON_IsString(msg) && msg->valuestring)
 
 - 다음과 같이 root에서 “message”를 분리하여 가져온다
 - mag에 값이 정상적으로 들어오면, 구조체 msg에 접근해 값을 추출한다
+
+- `cJSON_GetObjectItemCaseSensitive` 는 key이름의 대소문자를 구분한다 `(test ≠ TEST)`
+- `cJSON_GetObjectItem` 는 key 이름의 대소문자를 구분하지 않는다 `(test == TEST)`
 
 > 자주 생기는 함정
 > 
