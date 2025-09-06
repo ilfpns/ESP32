@@ -216,6 +216,15 @@ if (w != tail_len)
 
 ⇒ 헤더, 사진을 모두 보냈다면 tail을 보내 종료
 
+- 다음과 같이 서버에 요구사항을 header에 담아 보낼 수 있다
+
+```c
+esp_http_client_set_header(client, "Content-Type", ctype);
+esp_http_client_set_header(client, "Accept", "application/json");
+esp_http_client_set_header(client, "Accept-Encoding", "identity");
+esp_http_client_set_header(client, "Connection", "close");
+```
+
 ### 9
 
 ---
